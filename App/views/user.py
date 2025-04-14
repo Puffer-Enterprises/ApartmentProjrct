@@ -6,6 +6,10 @@ from.index import index_views
 from App.controllers import (
     create_user,
     get_all_users,
+    get_all_landlords_json,
+    get_all_apartments_json,
+    get_all_tenants_json,
+    get_all_reviews_json,
     get_all_users_json,
     jwt_required
 )
@@ -38,3 +42,23 @@ def create_user_endpoint():
 @user_views.route('/static/users', methods=['GET'])
 def static_user_page():
   return send_from_directory('static', 'static-user.html')
+
+@user_views.route('/landlords',methods=['GET'])
+def get_landlords():
+    landlords = get_all_landlords_json()
+    return jsonify(landlords)
+
+@user_views.route('/apartments',methods=['GET'])
+def get_apartments():
+    apartments = get_all_apartments_json()
+    return jsonify(apartments)
+
+@user_views.route('/tenants',methods=['GET'])
+def get_tenants():
+    tenants = get_all_tenants_json()
+    return jsonify(tenants)
+
+@user_views.route('/reviews',methods=['GET'])
+def get_reviews():
+    reviews = get_all_reviews_json()
+    return jsonify(reviews)

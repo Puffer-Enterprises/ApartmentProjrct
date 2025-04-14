@@ -4,8 +4,11 @@ from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
 from App.models import User
+from App.models import Landlord
+from App.models import Tenant
+from App.models import Apartment
 from App.main import create_app
-from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize )
+from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, create_landlord, create_apartment,create_tenant,create_review )
 
 
 # This commands file allow you to create convenient CLI commands for testing controllers
@@ -36,6 +39,48 @@ user_cli = AppGroup('user', help='User object commands')
 def create_user_command(username, password):
     create_user(username, password)
     print(f'{username} created!')
+    
+# Create a landlord
+@user_cli.command("create_landlord", help="Creates a landlord")
+@click.argument("user_id",default="1")
+@click.argument("first_name", default="rob")
+@click.argument("last_name", default="martin")
+def create_landlord_command(user_id,first_name, last_name):
+    create_landlord(user_id, first_name,last_name)
+    print(f' landlord {first_name} {last_name} created!!!!')
+    
+# Create a tenant
+@user_cli.command("create_tenant", help="Creates a tenant")
+@click.argument("user_id",default="1")
+@click.argument("first_name", default="rob")
+@click.argument("last_name", default="martin")
+@click.argument("apartment_id",default=1)
+def create_tenant_command(user_id, first_name, last_name, apartment_id):
+    create_tenant(user_id, first_name, last_name, apartment_id)
+    print(f'Tenant {first_name} {last_name} created in apartment {apartment_id}!')
+    
+# Create an apartment
+@user_cli.command("create_apartment", help="Creates an apartment")
+@click.option("--landlord-id", default=1, prompt="Landlord ID", type=int)
+@click.option("--address", default="#1 sunset avenue", prompt="Address")
+@click.option("--rent", default=1000.00, prompt="Rent", type=float)
+@click.option("--bathrooms", default=2, prompt="Number of bathrooms", type=int)
+@click.option("--bedrooms", default=2, prompt="Number of bedrooms", type=int)
+def create_apartment_command(landlord_id, address, rent, bathrooms, bedrooms):
+    create_apartment(landlord_id, address, rent, bathrooms, bedrooms)
+    print(f'Apartment created with {bathrooms} bathrooms and {bedrooms} bedrooms!')
+
+
+# Create a review
+@user_cli.command("create_review", help="Creates a review")
+@click.option("--tenant-id", default=1, prompt="tenant ID", type=int)
+@click.option("--apartment-id", default=1, prompt="apartment ID", type=int)
+@click.option("--comment", default="", prompt="comment")
+@click.option("--rating", default=10, prompt="Rating", type=int)
+def create_review_command(tenant_id, apartment_id, comment, rating):
+    create_review(tenant_id, apartment_id, rating,comment)
+    print(f'Review created for apartment {apartment_id} with rating {rating}!')
+
 
 # this command will be : flask user create bob bobpass
 
