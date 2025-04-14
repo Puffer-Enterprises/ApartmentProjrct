@@ -31,7 +31,7 @@ def identify_page():
 def login_action():
     data = request.form
     token = login(data['username'], data['password'])
-    response = redirect(url_for('index_views.index_page'))
+    response = redirect(request.referrer)
     if not token:
         flash('Bad username or password given'), 401
     else:
