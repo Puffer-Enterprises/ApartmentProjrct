@@ -1,11 +1,12 @@
 from flask import Blueprint, render_template, jsonify, request, flash, send_from_directory, flash, redirect, url_for
-from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies
-
+from flask_jwt_extended import jwt_required, current_user, unset_jwt_cookies, set_access_cookies, create_access_token
+from App.models import User
 
 from.index import index_views
 
 from App.controllers import (
-    login
+    login,
+    get_all_users
 )
 
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
@@ -70,3 +71,4 @@ def logout_api():
     response = jsonify(message="Logged Out!")
     unset_jwt_cookies(response)
     return response
+

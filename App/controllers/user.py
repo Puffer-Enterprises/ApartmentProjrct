@@ -4,6 +4,7 @@ from App.models import Landlord
 from App.models import Tenant
 from App.models import Apartment
 from App.models import Review
+from flask_jwt_extended import create_access_token
 
 def create_user(username, password):
     newuser = User(username=username, password=password)
@@ -86,3 +87,4 @@ def get_all_reviews_json():
         return []
     reviews = [review.get_json() for review in reviews]
     return reviews
+
