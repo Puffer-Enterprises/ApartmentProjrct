@@ -10,21 +10,9 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
 @index_views.route('/', methods=['GET'])
 def index_page():
-    tenants = Tenant.query.all()
-    verify_jwt_in_request(optional=True)
-    user_id = get_jwt_identity()
-    landlords = Landlord.query.all()
-    tenant_bool = False
-    landlord_bool = False
-    for t in tenants:
-        if t.user_id == user_id:
-            tenant_bool = True
 
-    for l in landlords:
-        if l.user_id == user_id:
-            landlord_bool = True
 
-    return render_template('index.html',tenants=tenants,landlord_bool=landlord_bool,tenant_bool=tenant_bool)
+    return render_template('index.html')
 
 @index_views.route('/init', methods=['GET'])
 def init():
