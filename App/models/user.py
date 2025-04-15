@@ -41,7 +41,8 @@ class Landlord(db.Model):
 class Apartment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     landlord_id = db.Column(db.Integer, db.ForeignKey('landlord.id'), nullable=False)
-    address = db.Column(db.String(100), nullable=False)
+    street = db.Column(db.String(100), nullable=False)
+    town = db.Column(db.String(100), nullable=False)
     rent = db.Column(db.Float, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
@@ -49,7 +50,8 @@ class Apartment(db.Model):
     def get_json(self):
         return{
             'id': self.id,
-            'address': self.address,
+            'street': self.street,
+            'town': self.town,
             'rent': self.rent
         }
     
