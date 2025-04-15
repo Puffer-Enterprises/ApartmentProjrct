@@ -9,12 +9,7 @@
     {% if is_authenticated %}
         <p> Welcome {{current_user.username}} !!!!</p>
 
-        {% if landlord_bool == True %}
-            <p>LANDLORD!!!</p>
-        {% endif %}
-        {% if tenant_bool == True %}
-            <p>TENANT!!!</p>
-        {% endif %}
+        
     {% endif %}
     <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
 
