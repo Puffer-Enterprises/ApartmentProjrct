@@ -41,8 +41,8 @@ def create_landlord(user_id,first_name,last_name):
     db.session.commit()
     return landlord
 
-def create_apartment(landlord_id,street,town,rent,bedrooms,bathrooms):
-    apartment = Apartment(landlord_id=landlord_id,street=street,town=town,rent=rent,bedrooms=bedrooms,bathrooms=bathrooms)
+def create_apartment(landlord_id,street,town,rent,bedrooms,bathrooms,image):
+    apartment = Apartment(landlord_id=landlord_id,street=street,town=town,rent=rent,bedrooms=bedrooms,bathrooms=bathrooms,image=image)
     db.session.add(apartment)
     db.session.commit()
     return apartment
