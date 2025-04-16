@@ -46,6 +46,7 @@ class Apartment(db.Model):
     rent = db.Column(db.Float, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
+    image = db.Column(db.String(255), nullable=True)
     
     def get_json(self):
         return{
