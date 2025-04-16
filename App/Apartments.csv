@@ -1,0 +1,21 @@
+id,landlord_id,street,town,rent,bedrooms,bathrooms,image
+1,3,7 Ariapita Avenue,Couva,3235,2,3,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX9PiX8SL3QGE2MksnHs0rKJinqe38Izpa9g&s
+2,2,174 Southern Main Road,Diego Martin,2761,4,1,https://t3.ftcdn.net/jpg/02/95/71/38/360_F_295713811_ilg5EbeLqu7RvzKpJrEgCfneLjTZ1xja.jpg
+3,1,24 Eastern Main Road,San Fernando,3198,1,3,https://images.unsplash.com/photo-1612637968894-660373e23b03?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBhcnRtZW50JTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D
+4,4,184 Cipriani Boulevard,Scarborough,4604,4,1,https://archipro.com.au/images/cdn-images/width%3D3840%2Cquality%3D80/images/s1/article/building/Form-Apartments-Port-Coogee-by-Stiebel-Eltron--v2.jpg/eyJlZGl0cyI6W3sidHlwZSI6InpwY2YiLCJvcHRpb25zIjp7ImJveFdpZHRoIjoyODgwLCJib3hIZWlnaHQiOjE4NTYsImNvdmVyIjp0cnVlLCJ6b29tV2lkdGgiOjI4ODAsInNjcm9sbFBvc1giOjUwLCJzY3JvbGxQb3NZIjo1MCwiYmFja2dyb3VuZCI6InJnYigxMTUsMTQwLDE5NCkiLCJmaWx0ZXIiOjB9fSx7InR5cGUiOiJmbGF0dGVuIiwib3B0aW9ucyI6eyJiYWNrZ3JvdW5kIjoiI2ZmZmZmZiJ9fV0sInF1YWxpdHkiOjg3LCJ0b0Zvcm1hdCI6ImpwZyJ9
+5,5,151 Independence Avenue,Couva,4928,1,1,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnMBJCWshZy4sNKZOQm91aT0c6R0S8_2h-0g&s
+6,1,88 Bamboo Boulevard,Couva,2966,3,1,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2heEAr62IA8aYpqsaA_EiI-cMDzmaKRZGIA&s
+7,2,98 Wrightson Road,Chaguanas,3577,3,3,https://www.phillyaptrentals.com/wp-content/uploads/2020/12/apartment-building-what-makes-good-apartment-building-scaled.jpg
+8,5,12 Ramjohn Street,Maraval,4109,4,1,https://www.thehousedesigners.com/images/plans/01/EEA/bulk/7855/3019_1_m.webp
+9,3,76 Montrose Main Road,Scarborough,4356,3,3,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlcTxdmEqyZIM_5-ek-n5vPrjmME8bt2CtDg&s
+10,4,181 Penco Street,Chaguanas,2637,2,2,https://mybunchofkeys.com/wp-content/uploads/2024/02/a-10-960x631.jpg
+11,2,60 Patna Street,Chaguanas,3640,4,3,https://img.mitula.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzAxOTIxNDAxLTc0YzQtNzIyZC1iMjU0LTEwZTgzMDlmZGY1ZS8wMTkyMTQwMS04MTUzLTcyZTEtODUyOS00ZGRiMDRjYmVjMTYuanBnIiwiYnJhbmQiOiJtaXR1bGEiLCJlZGl0cyI6eyJyb3RhdGUiOm51bGwsInJlc2l6ZSI6eyJ3aWR0aCI6MzgwLCJoZWlnaHQiOjIzMCwiZml0IjoiY292ZXIifX19
+12,3,42 Caroni Savannah Road,Arima,3566,3,3,https://pix.dotproperty.co.th/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzAxOTI1MTdjLWRlZWQtN2JiOC1iMzk4LWUxZDBjNWNlZGU0Zi8wMTkyNTE3Yy1lZTAyLTcxZmMtYThkYi00YmMyNTQ4MGY5YWEuanBnIiwiYnJhbmQiOiJkb3Rwcm9wZXJ0eSIsImVkaXRzIjp7InJvdGF0ZSI6bnVsbCwicmVzaXplIjp7IndpZHRoIjo0OTAsImhlaWdodCI6MzI1LCJmaXQiOiJjb3ZlciJ9fX0=
+13,2,156 Saddle Road,Scarborough,3013,2,1,https://st.hzcdn.com/simgs/pictures/living-rooms/modern-eclectic-downtown-high-rise-apartment-darbyshire-designs-img~8b816cbb0cca8b81_14-1544-1-0d60b70.jpg
+14,1,98 High Street,Couva,5469,2,3,https://www.decorilla.com/online-decorating/wp-content/uploads/2020/07/Color-coordinated-black-and-white-modern-apartment-design-with-modern-apartment-decor-by-Michelle-B.jpg
+15,5,197 Diego Martin Main Road,Port of Spain,3187,1,2,https://fontanarchitecture.com/wp-content/uploads/2020/04/Modern-Apartment-Design-Ideas.jpg
+16,3,69 Charlotte Street,Chaguanas,3133,3,1,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_qls6SQl5ZUBIX2RC8-P_Y0uPsWNqzIZ1Q&s
+17,2,102 Naparima Mayaro Road,Scarborough,3877,3,1,https://images.adsttc.com/media/images/637c/cc4e/db20/0f35/7400/b765/large_jpg/housing-apartment-at-badade-nagar-studio-frozen-music_1.jpg?1669123187
+18,4,191 La Romain Road,Diego Martin,4117,4,3,https://images.ctfassets.net/pg6xj64qk0kh/2Ovng3YfZqgsaFVC8bsiDk/4f963b852b3d9a208ac90c3a90979a80/camden-west-nashville-apartments-nashville-tn-resort-style-pool-at-twilight.jpg
+19,1,93 Western Main Road,San Fernando,5492,2,3,https://cf.bstatic.com/xdata/images/hotel/max1024x768/429080269.jpg?k=818d37f8a10393efba54d161070cbaaadb405a1d1b99087090d9d731c018cef1&o=&hp=1
+20,5,24 Longden Street,Port of Spain,5083,2,3,https://t4.ftcdn.net/jpg/00/94/98/23/360_F_94982338_VHNZJZUb2kND2K6bZhn5LDHi0gpJRwgn.jpg
