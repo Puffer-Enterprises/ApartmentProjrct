@@ -67,8 +67,9 @@ def create_tenant_command(user_id, first_name, last_name, apartment_id):
 @click.option("--rent", default=1000.00, prompt="Rent", type=float)
 @click.option("--bathrooms", default=2, prompt="Number of bathrooms", type=int)
 @click.option("--bedrooms", default=2, prompt="Number of bedrooms", type=int)
-def create_apartment_command(landlord_id,street,town, rent, bathrooms, bedrooms):
-    create_apartment(landlord_id,street,town, rent, bathrooms, bedrooms)
+@click.option("--image", default="", prompt="Image")
+def create_apartment_command(landlord_id,street,town, rent, bathrooms, bedrooms,image):
+    create_apartment(landlord_id,street,town, rent, bathrooms, bedrooms, image)
     print(f'Apartment created with {bathrooms} bathrooms and {bedrooms} bedrooms!')
 
 
