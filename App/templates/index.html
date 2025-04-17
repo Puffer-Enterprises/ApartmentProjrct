@@ -114,10 +114,39 @@
 {% endif %}
 
         
-    </div>
-
-    
-
+<!-- Add Apartment Section -->
+        {% if landlord_boolean %}
+        <div class="add-apartment">
+            <h2>Add a New Apartment</h2>
+            <form action="/apartments/add" method="POST">
+                <div class="form-group">
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" placeholder="Enter street" required>
+                </div>
+                <div class="form-group">
+                    <label for="town">Town:</label>
+                    <input type="text" id="town" name="town" placeholder="Enter town" required>
+                </div>
+                <div class="form-group">
+                    <label for="rent">Rent ($):</label>
+                    <input type="number" id="rent" name="rent" step="0.01" placeholder="Enter rent amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="bedrooms">Bedrooms:</label>
+                    <input type="number" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="bathrooms">Bathrooms:</label>
+                    <input type="number" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL (optional):</label>
+                    <input type="text" id="image" name="image" placeholder="Enter image URL">
+                </div>
+                <button type="submit" class="btn">Add Apartment</button>
+            </form>
+        </div>
+        {% endif %}
     {% else %}
     <p> Not logged in </p>
     {% endif %}
