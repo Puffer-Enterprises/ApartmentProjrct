@@ -1,3 +1,241 @@
-html {
-    padding: 0;
+ h1{
+        font-size : 1.5em;
+      }
+
+      html{
+        height: 100vh;
+        width: 100vw;
+        margin:0;
+        padding:0;
+      }
+
+      body{
+        margin:0;
+        padding:0;
+        height: 100%;
+        width: 100%;
+      }
+
+        /* For the navbar "Welcome" message */
+        .welcome-message {
+            color: white; /* Match the text color with the navbar theme */
+            margin: 0; /* Remove unnecessary margins */
+            font-size: 16px; /* Adjust the text size */
+            white-space: nowrap; /* Ensure that the text doesn’t wrap onto a new line */
+        }
+
+        .nav-wrapper ul.right {
+            display: flex; /* Use flexbox to arrange items in one row */
+            align-items: center; /* Vertically align items */
+            gap: 20px; /* Add spacing between the "Welcome" text and the button */
+        }
+
+      .titling{
+          text-align: center;
+          font-size: 3em;
+          color: #000;
+      }
+
+      .card {
+    border-radius: 15px; /* Rounded corners for the card */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better visual */
+    padding: 20px;
+    margin: 15px auto; /* Center the cards horizontally */
+    background-color: #fff; /* White card background */
+    text-align: center; /* Center content inside the card */
+    }
+
+    .card img {
+    margin-bottom: 10px;
+    width: 350px; /* Enlarged width for the image */
+    height: 300px; /* Enlarged height for the image */
+}
+
+
+      .card-action {
+    margin-top: 10px;
+}
+
+.card p, .card a  {
+    margin-bottom: 10px; /* Slight spacing between elements */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensure cards don't crowd together */
+}
+
+    .card .features {
+    display: flex;
+    justify-content: center; /* Center the features horizontally */
+    align-items: center; /* Align icons and text vertically */
+    gap: 20px; /* Add spacing between each feature */
+}
+
+.card .features .feature {
+    display: flex;
+    align-items: center; /* Ensure the icon and text are horizontally aligned */
+    gap: 8px; /* Add small spacing between the icon and the value */
+}
+
+.card .feature i {
+    font-size: 1.2em; /* Adjust size of the icons */
+    color: #555; /* Optional: Icon color */
+}
+
+.card .feature span {
+    font-size: 1em; /* Size of the numbers (bathrooms and bedrooms) */
+    color: #333; /* Text color */
+}
+
+/* RATINGS CSS*/
+ /* General container for reviews */
+.reviews-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Page title */
+.page-title {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Reviews section */
+.reviews {
+    margin-bottom: 40px;
+}
+
+.review {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review-comment {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rating-text {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Display ratings as stars */
+.stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Font Awesome 6 Free"; /* Use FontAwesome icons */
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffc107 var(--percent), #e4e5e9 var(--percent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.stars::before {
+    content: "★★★★★"; /* 5 star placeholders */
+}
+
+/* No reviews available */
+.no-reviews {
+    font-size: 1em;
+    color: #888;
+    text-align: center;
+}
+
+/* Form styling */
+.leave-review {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tenant-info {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #444;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+textarea {
+    resize: vertical;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 100px;
+}
+
+.btn-submit {
+    padding: 10px;
+    background-color: #6200ea;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #3700b3;
+}
+
+/* Star rating input */
+.stars-input {
+    display: flex;
+    flex-direction: row-reverse; /* Right-to-left for proper orientation */
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.stars-input input {
+    display: none; /* Hide native radio inputs */
+}
+
+.stars-input label {
+    font-size: 1.5em;
+    color: #e4e5e9;
+    cursor: pointer;
+}
+
+.stars-input input:checked ~ label,
+.stars-input label:hover,
+.stars-input label:hover ~ label {
+    color: #ffc107; /* Highlighted stars */
 }
