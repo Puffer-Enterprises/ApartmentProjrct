@@ -58,6 +58,37 @@ def add_review(apartment_id, tenant_id):
     db.session.commit()
     return redirect(url_for('index_views.apartment_details', apartment_id=apartment_id))
 
+@index_views.route('/apartments/add', methods=['POST'])
+@jwt_required()
+def add_apartment():
+    user = current_user
+    landlord = Landlord.query.filter_by(user_id=user.id).first()
+    if not landlord:
+        flash('Only landlords can add apartments.')
+        return
+
+    street = request.form.get('street')
+    town = request.form.get('town')
+    rent = request.form.get('rent')
+    bedrooms = request.form.get('bedrooms')
+    bathrooms = request.form.get('bathrooms')
+    image = request.form.get('image')
+
+    new_apartment = Apartment(
+        landlord_id=landlord.id,
+        street=street,
+        town=town,
+        rent=rent,
+        bedrooms=bedrooms,
+        bathrooms=bathrooms,
+        image=image
+    )
+
+    db.session.add(new_apartment)
+    db.session.commit()
+
+    return redirect(url_for('index_views.apartment_details', apartment_id=new_apartment.id))
+
 @index_views.route('/init', methods=['GET'])
 def init():
     initialize()
