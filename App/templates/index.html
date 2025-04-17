@@ -5,69 +5,113 @@
 {{ super() }}
 
 {% block content %}
-    <h1>Flask MVC</h1>
     {% if is_authenticated %}
-    {% if not selected_apartment %}
-    <p> Welcome {{current_user}} </p>
-    <p> Username: {{current_user.username}} </p>
-    {% if tenant_boolean %}
-    <p>You are a tenant. Thus you can only review your apartment.</p>
-    {% if user_apartment2 %}
-    <p> You are the tenant of apartment number {{user_apartment2.id}}</p>
-    {% else %}
-    <p> You are not a current tenant of any apartment </p>
-    {% endif %}
-    {% if user_apartment %}
-    {% endif %}
-    {% elif landlord_boolean %}
-    <p>You are a landlord. Thus you can create apartment listings.</p>
-    {% endif %}
-    
-    {% endif %}
-
-
-
-    <div>
         {% if not selected_apartment %}
-        <h1>APARTMENTS</h1>
+
+            {% if tenant_boolean %}
+                <p>You are a tenant. Thus you can only review your apartment.</p>
+                {% if user_apartment2 %}
+                    <p> You are the tenant of apartment number {{user_apartment2.id}}</p>
+                    {% else %}
+                    <p> You are not a current tenant of any apartment </p>
+                {% endif %}
+                {% if user_apartment %}
+                {% endif %}
+            {% elif landlord_boolean %}
+                <p>You are a landlord. Thus you can create apartment listings.</p>
+            {% endif %}
+    
         {% endif %}
-        {% for apart in apartments %}
-          <div class="apartment">
-            <p>Apartment number: {{ apart.id }}</p>
-            <img src="{{ apart.image }}" alt="Apartment Image" style="width: 200px; height: 150px;">
-            <p>Location: {{ apart.street }} {{apart.city}}</p>
-            <p>Bathrooms: {{ apart.bathrooms }} </p>
-            <p>Rooms: {{ apart.bedrooms }}</p>
-            <p>Rent: {{ apart.rent }} $</p>
-            <a class="red btn" href="/apartments/{{apart.id}}">SELECT</a>
-          </div>
-        {% endfor %}
+
+<h1 class="titling">APARTMENTS</h1>
+
+            <div class="row">
+    {% if not selected_apartment %}
+
+    {% endif %}
+    {% for apart in apartments %}
+        <div class="card col m4">
+            <div class="card-content">
+                <div class="apartment">
+                    <p>Apartment No. {{ apart.id }}</p>
+                    <img src="{{ apart.image }}" alt="Apartment Image">
+                    <p class="location"><b>{{ apart.street }}, {{ apart.town }}</b></p>
+
+                    <!-- Bathrooms and Bedrooms aligned with icons -->
+                    <div class="features">
+                        <div class="feature">
+                             <i class="fa fa-bath"></i> <!-- Bathroom icon -->
+                            <span>{{ apart.bathrooms }}</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fa fa-bed"></i> <!-- Bedroom icon -->
+                            <span>{{ apart.bedrooms }}</span>
+                        </div>
+                    </div>
+
+                    <p>Rent: ${{ apart.rent }}0</p>
+                </div>
+                <div class="card-action">
+                    <a class="red btn" href="/apartments/{{ apart.id }}">VIEW</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
         
         {% if selected_apartment %} 
-          <h1>Former Tenant Reviews for apartment number {{selected_apartment.id}}</h1>
-          {% for review in reviews %}
-            <div class="review">
-              <p>Review: {{ review.comment }}</p>
-              <p>Rating: {{ review.rating }}</p>
+  <div class="reviews-container">
+    <h1 class="page-title">Former Tenant Reviews for Apartment Number {{selected_apartment.id}}</h1>
+
+    <!-- Display Reviews -->
+    <div class="reviews">
+      {% for review in reviews %}
+        <div class="review">
+          <p class="review-comment">"<strong>{{ review.comment }}</strong>"</p>
+          <div class="rating-stars">
+            <span class="stars" style="--rating: {{ review.rating }};" aria-label="Rating: {{ review.rating }}"></span>
+            <p class="rating-text">Rating: {{ review.rating }} / 5</p>
+          </div>
+        </div>
+      {% endfor %}
+      {% if not reviews %}
+        <p class="no-reviews">No reviews available for this apartment.</p>
+      {% endif %}
+    </div>
+
+    <!-- Leave a Review (if tenant) -->
+    {% if selected_apartment.id == user_apartment.id %}
+      <div class="leave-review">
+        <p class="tenant-info">You are the tenant of this apartment.</p>
+        <h1 class="form-title">Leave a Review</h1>
+        <form action="/apartments/{{selected_apartment.id}}/{{tenant.id}}/review" method="POST" class="review-form">
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" placeholder="Share your experience..." required></textarea>
+          </div>
+          <div class="form-group rating-input">
+            <label for="rating">Rating:</label>
+            <div class="stars-input">
+              <input type="radio" id="star-5" name="rating" value="5">
+              <label for="star-5" class="fa fa-star"></label>
+              <input type="radio" id="star-4" name="rating" value="4">
+              <label for="star-4" class="fa fa-star"></label>
+              <input type="radio" id="star-3" name="rating" value="3">
+              <label for="star-3" class="fa fa-star"></label>
+              <input type="radio" id="star-2" name="rating" value="2">
+              <label for="star-2" class="fa fa-star"></label>
+              <input type="radio" id="star-1" name="rating" value="1">
+              <label for="star-1" class="fa fa-star"></label>
             </div>
-          {% endfor %}
-          {% if not reviews %}
-            <p>No reviews available for this apartment.</p>
-          {% endif %}
-          {% if selected_apartment.id == user_apartment.id %}
-            <p> You are the tenant of this apartment </p>
-            <h1>Leave a Review</h1>
-            <form action="/apartments/{{selected_apartment.id}}/{{tenant.id}}/review" method="POST">
-              <label for="comment">Comment:</label>
-              <input type="text" id="comment" name="comment" required>
-              <label for="rating">Rating:</label>
-              <input type="number" id="rating" name="rating" min="1" max="5" required>
-              <button type="submit">Submit Review</button>
-            </form>
-          {% else %}
-            <p> You are not the tenant of this apartment </p>
-          {% endif %}
-        {% endif %}
+          </div>
+          <button type="submit" class="btn-submit">Submit Review</button>
+        </form>
+      </div>
+    {% else %}
+      <p class="not-tenant">You are not the tenant of this apartment.</p>
+    {% endif %}
+  </div>
+{% endif %}
 
         
     </div>
@@ -77,7 +121,6 @@
     {% else %}
     <p> Not logged in </p>
     {% endif %}
-    <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
 
     
 
