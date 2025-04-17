@@ -24,6 +24,46 @@
         {% endif %}
 
 <h1 class="titling">APARTMENTS</h1>
+    <!-- Search Section -->
+<div class="search-section container">
+    <p>Search for Apartments</p>
+   <form action="/apartments/search" method="GET" class="search-form">
+        <div class="row">
+            <!-- Town Field -->
+            <div class="input-field col s12 m6">
+                <input id="town" type="text" name="town" class="validate">
+                <label for="town">Town</label>
+            </div>
+
+            <!-- Minimum Bedrooms -->
+            <div class="input-field col s12 m6">
+                <input id="min_bedrooms" type="number" name="min_bedrooms" min="0" class="validate">
+                <label for="min_bedrooms">Minimum Bedrooms</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Minimum Bathrooms -->
+            <div class="input-field col s12 m6">
+                <input id="min_bathrooms" type="number" name="min_bathrooms" min="0" class="validate">
+                <label for="min_bathrooms">Minimum Bathrooms</label>
+            </div>
+
+            <!-- Maximum Rent -->
+            <div class="input-field col s12 m6">
+                <input id="max_rent" type="number" name="max_rent" min="0" step="0.01" class="validate">
+                <label for="max_rent">Maximum Rent</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button type="submit" class="btn waves-effect waves-light">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
             <div class="row">
     {% if not selected_apartment %}
@@ -36,24 +76,23 @@
                     <p>Apartment No. {{ apart.id }}</p>
                     <img src="{{ apart.image }}" alt="Apartment Image">
                     <p class="location"><b>{{ apart.street }}, {{ apart.town }}</b></p>
-
+                </div>
                     <!-- Bathrooms and Bedrooms aligned with icons -->
-                    <div class="features">
-                        <div class="feature">
-                             <i class="fa fa-bath"></i> <!-- Bathroom icon -->
-                            <span>{{ apart.bathrooms }}</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fa fa-bed"></i> <!-- Bedroom icon -->
-                            <span>{{ apart.bedrooms }}</span>
-                        </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fa fa-bath"></i> <!-- Bathroom icon -->
+                        <span>{{ apart.bathrooms }}</span>
                     </div>
+                    <div class="feature">
+                        <i class="fa fa-bed"></i> <!-- Bedroom icon -->
+                        <span>{{ apart.bedrooms }}</span>
+                    </div>
+                </div>
 
-                    <p>Rent: ${{ apart.rent }}0</p>
-                </div>
-                <div class="card-action">
-                    <a class="red btn" href="/apartments/{{ apart.id }}">VIEW</a>
-                </div>
+                <p>Rent: ${{ apart.rent }}0</p>
+            </div>
+            <div class="card-action">
+                <a class="red btn" href="/apartments/{{ apart.id }}">VIEW</a>
             </div>
         </div>
     {% endfor %}
@@ -113,8 +152,8 @@
   </div>
 {% endif %}
 
-        
-<!-- Add Apartment Section -->
+
+ <!-- Add Apartment Section -->
         {% if landlord_boolean %}
         <div class="add-apartment">
             <h2>Add a New Apartment</h2>
