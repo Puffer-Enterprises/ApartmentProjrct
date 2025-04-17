@@ -36,13 +36,14 @@ def login_action():
     if not token:
         flash('Bad username or password given'), 401
     else:
+        response = redirect(url_for('index_views.check'))
         flash('Login Successful')
         set_access_cookies(response, token) 
     return response
 
 @auth_views.route('/logout', methods=['GET'])
 def logout_action():
-    response = redirect(request.referrer) 
+    response = redirect(url_for('index_views.index_page')) 
     flash("Logged Out!")
     unset_jwt_cookies(response)
     return response
@@ -71,3 +72,4 @@ def logout_api():
     response = jsonify(message="Logged Out!")
     unset_jwt_cookies(response)
     return response
+
