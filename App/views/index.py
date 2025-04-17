@@ -111,7 +111,7 @@ def search_apartments():
 
     apartments = query.all()
 
-    return render_template('search_results.html', apartments=apartments)
+    return render_template('search.html', apartments=apartments)
 
 
 @index_views.route('/init', methods=['GET'])
