@@ -7,12 +7,78 @@
 {% block content %}
     <h1>Flask MVC</h1>
     {% if is_authenticated %}
+    {% if not selected_apartment %}
     <p> Welcome {{current_user}} </p>
     <p> Username: {{current_user.username}} </p>
+    {% if tenant_boolean %}
+    <p>You are a tenant. Thus you can only review your apartment.</p>
+    {% if user_apartment2 %}
+    <p> You are the tenant of apartment number {{user_apartment2.id}}</p>
+    {% else %}
+    <p> You are not a current tenant of any apartment </p>
+    {% endif %}
+    {% if user_apartment %}
+    {% endif %}
+    {% elif landlord_boolean %}
+    <p>You are a landlord. Thus you can create apartment listings.</p>
+    {% endif %}
+    
+    {% endif %}
+
+
+
+    <div>
+        {% if not selected_apartment %}
+        <h1>APARTMENTS</h1>
+        {% endif %}
+        {% for apart in apartments %}
+          <div class="apartment">
+            <p>Apartment number: {{ apart.id }}</p>
+            <img src="{{ apart.image }}" alt="Apartment Image" style="width: 200px; height: 150px;">
+            <p>Location: {{ apart.street }} {{apart.city}}</p>
+            <p>Bathrooms: {{ apart.bathrooms }} </p>
+            <p>Rooms: {{ apart.bedrooms }}</p>
+            <p>Rent: {{ apart.rent }} $</p>
+            <a class="red btn" href="/apartments/{{apart.id}}">SELECT</a>
+          </div>
+        {% endfor %}
+        
+        {% if selected_apartment %} 
+          <h1>Former Tenant Reviews for apartment number {{selected_apartment.id}}</h1>
+          {% for review in reviews %}
+            <div class="review">
+              <p>Review: {{ review.comment }}</p>
+              <p>Rating: {{ review.rating }}</p>
+            </div>
+          {% endfor %}
+          {% if not reviews %}
+            <p>No reviews available for this apartment.</p>
+          {% endif %}
+          {% if selected_apartment.id == user_apartment.id %}
+            <p> You are the tenant of this apartment </p>
+            <h1>Leave a Review</h1>
+            <form action="/apartments/{{selected_apartment.id}}/{{tenant.id}}/review" method="POST">
+              <label for="comment">Comment:</label>
+              <input type="text" id="comment" name="comment" required>
+              <label for="rating">Rating:</label>
+              <input type="number" id="rating" name="rating" min="1" max="5" required>
+              <button type="submit">Submit Review</button>
+            </form>
+          {% else %}
+            <p> You are not the tenant of this apartment </p>
+          {% endif %}
+        {% endif %}
+
+        
+    </div>
+
+    
+
     {% else %}
     <p> Not logged in </p>
     {% endif %}
     <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
 
+    
 
 {% endblock %}
