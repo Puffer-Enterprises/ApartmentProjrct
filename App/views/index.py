@@ -58,6 +58,7 @@ def add_review(apartment_id, tenant_id):
     db.session.commit()
     return redirect(url_for('index_views.apartment_details', apartment_id=apartment_id))
 
+
 @index_views.route('/apartments/add', methods=['POST'])
 @jwt_required()
 def add_apartment():
@@ -88,6 +89,30 @@ def add_apartment():
     db.session.commit()
 
     return redirect(url_for('index_views.apartment_details', apartment_id=new_apartment.id))
+
+
+@index_views.route('/apartments/search', methods=['GET'])
+def search_apartments():
+    town = request.args.get('town')
+    min_bedrooms = request.args.get('min_bedrooms')
+    min_bathrooms = request.args.get('min_bathrooms')
+    max_rent = request.args.get('max_rent')
+
+    query = Apartment.query
+
+    if town:
+        query = query.filter(Apartment.town.ilike(f"%{town}%"))
+    if min_bedrooms:
+        query = query.filter(Apartment.bedrooms >= int(min_bedrooms))
+    if min_bathrooms:
+        query = query.filter(Apartment.bathrooms >= int(min_bathrooms))
+    if max_rent:
+        query = query.filter(Apartment.rent <= float(max_rent))
+
+    apartments = query.all()
+
+    return render_template('search_results.html', apartments=apartments)
+
 
 @index_views.route('/init', methods=['GET'])
 def init():
