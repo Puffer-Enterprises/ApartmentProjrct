@@ -73,15 +73,14 @@
                     <div class="card-action">
                         <a class="red btn" href="/apartments/{{ apart.id }}">VIEW</a>
                         {% if landlord_boolean %}
-                        {% for a in landlord_apartments %}
-                        {% if apart.id  == a.id %}
-                        <form action="/apartments/{{ apart.id }}/delete" method="POST">
-                            <button type="submit" class="red btn">DELETE</button>
-                        </form>
+                            {% for a in landlord_apartments %}
+                                {% if apart.id == a.id %}
+                                    <form action="/apartments/{{ apart.id }}/delete" method="POST">
+                                        <button type="submit" class="red btn">DELETE</button>
+                                    </form>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                        
                     </div>
                 </div>
             </div>
@@ -100,7 +99,7 @@
                             <p class="rating-text">Rating: {{ review.rating }} / 5</p>
                         </div>
                         {% if selected_apartment.id == user_apartment.id %}
-                        <a class="red btn" href="/deleteReview/{{ review.id }}">DELETE</a>
+                            <a class="red btn" href="/deleteReview/{{ review.id }}">DELETE</a>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -169,10 +168,6 @@
         </div>
     {% endif %}
 {% else %}
-    <p>Not logged in</p>
-{% endif %}
-{% endblock %}
-
     <p>Not logged in</p>
 {% endif %}
 {% endblock %}
