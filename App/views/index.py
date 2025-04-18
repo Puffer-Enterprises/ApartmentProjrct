@@ -33,8 +33,8 @@ def check():
     
     tenant = Tenant.query.filter_by(user_id=user.id).first()
     user_apartment2 = Apartment.query.filter_by(id=tenant.apartment_id).first() if tenant else None
-    
-    return render_template('index.html', apartments=apartments, landlord_boolean=landlord_boolean, tenant_boolean=tenant_boolean, user_apartment2=user_apartment2)
+    landlord_apartments = Apartment.query.filter_by(landlord_id=user.id).all()
+    return render_template('index.html', apartments=apartments, landlord_boolean=landlord_boolean, tenant_boolean=tenant_boolean, user_apartment2=user_apartment2, landlord_apartments=landlord_apartments, tenants=tenants, landlords=landlords)
 
 @index_views.route('/apartments/<apartment_id>') 
 @jwt_required()
@@ -46,7 +46,8 @@ def apartment_details(apartment_id):
     user_apartment = Apartment.query.filter_by(id=tenant.apartment_id).first() if tenant else None
     tenants = Tenant.query.all()
     landlords = Landlord.query.all()
-    return render_template('index.html', reviews=reviews,selected_apartment=selected_apartment, reviews2=reviews2,user_apartment=user_apartment,tenant=tenant,tenants=tenants,landlords=landlords)
+    landlord_apartment = Apartment.query.filter_by(landlord_id=current_user.id).first()
+    return render_template('index.html', reviews=reviews,selected_apartment=selected_apartment, reviews2=reviews2,user_apartment=user_apartment,tenant=tenant,tenants=tenants,landlords=landlords,landlord_apartment=landlord_apartment)
 
 
 @index_views.route('/apartments/<apartment_id>/<tenant_id>/review', methods=['POST'])
@@ -88,8 +89,7 @@ def add_apartment():
     db.session.add(new_apartment)
     db.session.commit()
 
-    return redirect(url_for('index_views.apartment_details', apartment_id=new_apartment.id))
-
+    return redirect(url_for('index_views.check'))
 
 @index_views.route('/apartments/search', methods=['GET'])
 def search_apartments():
@@ -113,6 +113,29 @@ def search_apartments():
 
     return render_template('search.html', apartments=apartments)
 
+
+@index_views.route('/apartments/<apartment_id>/delete', methods=['POST'])
+@jwt_required()
+def delete_apartment(apartment_id):
+    apartment = Apartment.query.get(apartment_id)
+    if not apartment:
+        return redirect(url_for('index_views.apartment_details', apartment_id=apartment_id))
+    
+    db.session.delete(apartment)
+    db.session.commit()
+    return redirect(url_for('index_views.check'))
+
+
+@index_views.route('/deleteReview/<review_id>')
+@jwt_required()
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    if not review:
+        return redirect(url_for('index_views.apartment_details', apartment_id=review.apartment_id))
+    
+    db.session.delete(review)
+    db.session.commit()
+    return redirect(url_for('index_views.apartment_details', apartment_id=review.apartment_id))
 
 @index_views.route('/init', methods=['GET'])
 def init():
