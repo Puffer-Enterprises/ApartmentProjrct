@@ -1,57 +1,83 @@
 {% extends "layout.html" %}
-{% block title %}Flask MVC App{% endblock %}
-{% block page %}Flask MVC App{% endblock %}
+{% block title %}Slice of Life{% endblock %}
+{% block page %}Slice of Life{% endblock %}
 
 {% block content %}
 {% if is_authenticated %}
-    {% if not selected_apartment %}
-
-        {% if tenant_boolean %}
-            <p>You are a tenant. Thus you can only review your apartment.</p>
-            {% if user_apartment2 %}
-                <p>You are the tenant of apartment number {{user_apartment2.id}}</p>
-            {% else %}
-                <p>You are not a current tenant of any apartment.</p>
-            {% endif %}
-        {% elif landlord_boolean %}
-            <p>You are a landlord. Thus you can create apartment listings.</p>
-        {% endif %}
-
-    {% endif %}
 
     <h1 class="titling">APARTMENTS</h1>
 
     <!-- Search Section -->
-    <div class="search-section container">
-        <p>Search for Apartments</p>
-        <form action="/apartments/search" method="GET" class="search-form">
-            <div class="row">
-                <div class="input-field col s12 m6">
-                    <input id="town" type="text" name="town" class="validate">
-                    <label for="town">Town</label>
-                </div>
-                <div class="input-field col s12 m6">
-                    <input id="min_bedrooms" type="number" name="min_bedrooms" min="0" class="validate">
-                    <label for="min_bedrooms">Minimum Bedrooms</label>
+    {% if show_search %}
+
+<div class="search-section container">
+    <form action="/apartments/search" method="GET" class="search-form">
+        <div class="row search-bar">
+            <!-- Town Input -->
+            <div class="input-field">
+                <input id="town" type="text" name="town" class="validate">
+                <label for="town">Town</label>
+            </div>
+
+            <!-- Bed and Baths Hover Dropdown -->
+            <div class="custom-dropdown">
+                <span class="dropdown-hover-text">Bed & Baths</span>
+                <div class="custom-dropdown-content">
+                    <h6>Number of Bedrooms</h6>
+                    <div class="bedroom-buttons">
+                        <button type="button" class="bedroom-button" data-value="0">Any</button>
+                        <button type="button" class="bedroom-button" data-value="1">1+</button>
+                        <button type="button" class="bedroom-button" data-value="2">2+</button>
+                        <button type="button" class="bedroom-button" data-value="3">3+</button>
+                        <button type="button" class="bedroom-button" data-value="4">4+</button>
+                        <button type="button" class="bedroom-button" data-value="5">5+</button>
+                    </div>
+
+                    <h6>Number of Bathrooms</h6>
+                    <div class="bathroom-buttons">
+                        <button type="button" class="bathroom-button" data-value="0">Any</button>
+                        <button type="button" class="bathroom-button" data-value="1">1+</button>
+                        <button type="button" class="bathroom-button" data-value="2">2+</button>
+                        <button type="button" class="bathroom-button" data-value="3">3+</button>
+                        <button type="button" class="bathroom-button" data-value="4">4+</button>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12 m6">
-                    <input id="min_bathrooms" type="number" name="min_bathrooms" min="0" class="validate">
-                    <label for="min_bathrooms">Minimum Bathrooms</label>
-                </div>
-                <div class="input-field col s12 m6">
-                    <input id="max_rent" type="number" name="max_rent" min="0" step="0.01" class="validate">
-                    <label for="max_rent">Maximum Rent</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button type="submit" class="btn waves-effect waves-light">Search</button>
+
+            <!-- Rent Range Hover Dropdown -->
+            <div class="custom-dropdown">
+                <span class="dropdown-hover-text">Price</span>
+                <div class="custom-dropdown-content">
+                    <label for="min-rent">Minimum Rent</label>
+                    <input id="min-rent" type="text" placeholder="No Min" />
+                    <label for="max-rent">Maximum Rent</label>
+                    <input id="max-rent" type="text" placeholder="No Max" />
                 </div>
             </div>
-        </form>
-    </div>
+
+
+            <!-- Search Button -->
+            <div class="search-button">
+                <button type="submit" class="btn waves-effect waves-light">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            {% if landlord_boolean %}
+            <div class="search-button">
+                <a href="#add-apartment-section" class="btn waves-effect waves-light">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+        <input type="hidden" name="min_bedrooms" value="0" />
+        <input type="hidden" name="min_bathrooms" value="0" />
+    </form>
+</div>
+{% endif %}
+
 
     <!-- Apartment Cards Section -->
     <div class="row">
@@ -61,26 +87,27 @@
                     <div class="card-content">
                         <div class="apartment">
                             <p><strong>Apartment No. {{ apart.id }}</strong></p>
-                            <img src="{{ apart.image }}" alt="Apartment Image" style="width:100%; height:auto;">
+                            <img src="{{ apart.image }}" alt="Apartment Image" style="width:100%; height: 200px; object-fit: cover;
+display: block;">
                             <p class="location"><b>{{ apart.street }}, {{ apart.town }}</b></p>
                         </div>
-                        <div class="features" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                        <div class="features" style="display: flex; margin-top: 10px;">
                             <div class="feature"><i class="fa fa-bath"></i> {{ apart.bathrooms }}</div>
                             <div class="feature"><i class="fa fa-bed"></i> {{ apart.bedrooms }}</div>
                         </div>
                         <p>Rent: ${{ apart.rent }}0</p>
                     </div>
-                    <div class="card-action">
-                        <a class="red btn" href="/apartments/{{ apart.id }}">VIEW</a>
-                        {% if landlord_boolean %}
-                            {% for a in landlord_apartments %}
-                                {% if apart.id == a.id %}
-                                    <form action="/apartments/{{ apart.id }}/delete" method="POST">
-                                        <button type="submit" class="red btn">DELETE</button>
-                                    </form>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                   <div class="card-action">
+                        <div class="button-group">
+                            <a class="btn1" href="/apartments/{{ apart.id }}">View</a>
+                            {% if landlord_boolean %}
+                                {% for a in landlord_apartments %}
+                                    {% if apart.id == a.id %}
+                                        <a class="btn2" href="/apartments/{{ apart.id }}/delete">Delete</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,44 +157,75 @@
                     </form>
                 </div>
             {% else %}
-                <p class="not-tenant">You are not the tenant of this apartment.</p>
+                <p class="no-reviews">You are not the tenant of this apartment.</p>
             {% endif %}
         </div>
     {% endif %}
 
     {% if landlord_boolean %}
-        <div class="add-apartment">
-            <h2>Add a New Apartment</h2>
-            <form action="/apartments/add" method="POST">
-                <div class="form-group">
-                    <label for="street">Street:</label>
-                    <input type="text" id="street" name="street" placeholder="Enter street" required>
-                </div>
-                <div class="form-group">
-                    <label for="town">Town:</label>
-                    <input type="text" id="town" name="town" placeholder="Enter town" required>
-                </div>
-                <div class="form-group">
-                    <label for="rent">Rent ($):</label>
-                    <input type="number" id="rent" name="rent" step="0.01" placeholder="Enter rent amount" required>
-                </div>
-                <div class="form-group">
-                    <label for="bedrooms">Bedrooms:</label>
-                    <input type="number" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="bathrooms">Bathrooms:</label>
-                    <input type="number" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
-                </div>
-                <div class="form-group">
-                    <label for="image">Image URL (optional):</label>
-                    <input type="text" id="image" name="image" placeholder="Enter image URL">
-                </div>
-                <button type="submit" class="btn">Add Apartment</button>
-            </form>
+<div id="add-apartment-section" class="add-apartment container">
+    <h2 class="form-title">Add a New Apartment</h2>
+    <form action="/apartments/add" method="POST" class="add-apartment-form">
+        <!-- Street Input -->
+        <div class="form-group">
+            <label for="street" style="font-weight: bolder; font-size: larger">Street:</label>
+            <input class="form-control" type="text" id="street" name="street" placeholder="Enter street" required>
         </div>
-    {% endif %}
+
+        <!-- Town Input -->
+        <div class="form-group">
+            <label for="town" style="font-weight: bolder; font-size: larger">Town:</label>
+            <input class="form-control" type="text" id="town" name="town" placeholder="Enter town or city" required>
+        </div>
+
+        <div class="dropdown-row">
+            <!-- Bedrooms Dropdown -->
+            <div class="dropdown-container">
+                <label for="bedrooms"><i class="fa fa-bed"></i> Bedrooms</label>
+                <select id="bedrooms" name="bedrooms" required>
+                    <option value="0" selected>Any</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+
+            <!-- Bathrooms Dropdown -->
+            <div class="dropdown-container">
+                <label for="bathrooms"><i class="fa fa-bath"></i> Bathrooms</label>
+                <select id="bathrooms" name="bathrooms" required>
+                    <option value="0" selected>Any</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+
+            <!-- Rent Input -->
+              <div class="dropdown-container">
+                <label for="rent">Rent (in $):</label>
+                <input type="text" id="rent" name="rent" placeholder="Enter Amount" required>
+              </div>
+
+        </div>
+
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label for="image" style="font-weight: bolder; font-size: larger">Apartment Image:</label>
+            <input class="form-control" type="url" id="image" name="image" placeholder="Enter image URL" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn waves-effect waves-light submit-button">Add Apartment</button>
+        </div>
+    </form>
+</div>
+{% endif %}
 {% else %}
-    <p>Not logged in</p>
+    <p class="nolog">Seems like you're not logged in.</p>
+    
 {% endif %}
 {% endblock %}
