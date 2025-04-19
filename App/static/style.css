@@ -1,213 +1,223 @@
- h1{
-        font-size : 1.5em;
-      }
+h1{
+    font-size : 1.5em;
+  }
 
-      html{
-        height: 100vh;
-        width: 100vw;
-        margin:0;
-        padding:0;
-      }
+  html{
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    padding:0;
+  }
 
-      body{
-        margin:0;
-        padding:0;
-        height: 100%;
-        width: 100%;
-        background: url('/static/bg.png') no-repeat center center fixed;
-        background-size: cover;
+  body{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+    background: url('/static/bg.png') no-repeat center center fixed;
+    background-size: cover;
 
-      }
+  }
+
+  .titling{
+      font-weight: bolder;
+      font-size: 2em;
+      color: #000;
+  }
+
+  /* Logo-styled font for Slice of Life */
+.brand-logo{
+font-family: 'Lobster', cursive;
+font-weight: 400;
+font-size: 2.5em; /* Adjust size as needed */
+color: #DA2C38; /* Add a logo-specific color */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for emphasis */
+letter-spacing: 1px; /* Adjust letter spacing */
+text-align: center; /* Ensure proper alignment */
+}
+
+  nav{
+      background-color: #DA2C38  !important;
+  }
+
+.nav-wrapper {
+    background-color: #DA2C38 !important;
+    }
+
+    .nav-logo {
+        height: 60px;
+        width: auto;
+        display: block;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    /* For the navbar "Welcome" message */
+    .welcome-message {
+        display: flex; /* Ensure the message behaves like a flexbox container */
+        align-items: center; /* Vertically align its content to the center */
+        margin: 0; /* Remove any extra vertical margin */
+        padding: 0; /* Remove any extra padding to avoid misalignment */
+        font-size: 16px; /* Keep the font size consistent */
+        color: white; /* Ensure contrast with the navbar background */
+        white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    }
+
+
+    .nav-wrapper ul.right {
+        display: flex;
+        align-items: center; /* Vertically align items */
+        gap: 20px; /* Add spacing between the "Welcome" text and the button */
+        line-height: 1;
+
+    }
+
+    .welcome-icon {
+        font-size: 20px; /* Adjust the size of the icon */
+        color: white; /* Match the navbar's text color */
+        cursor: pointer; /* Change the pointer to indicate it's interactive */
+        margin: 0 5px; /* Add some spacing around the icon */
+        vertical-align: middle; /* Align the icon vertically in the navbar */
+        line-height: 1;
+    }
+
+    .welcome-icon:hover {
+        color: #f0f0f0; /* Slightly lighten the color when hovered */
+        transition: color 0.3s ease; /* Smooth transition effect on hover */
+    }
+
+    .nolog{
+        text-align: center;
+        font-size: 3em;
+        color: #000;
+    }
+
+    .preloader {
+      align-items: center;
+      display: flex;
+      height: 25vh;
+      justify-content: center;
+      left: 0;
+      padding-top: 15vh;
+      top: 0;
+      transition: opacity 0.2s linear;
+      width: 100%;
+      z-index: 9999;
+      opacity: 1;
+    }
+
+    .loginbtn{
+        background-color: #226F54;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center!important;
+        padding: 8px 15px;
+        font-size: 14px;
+        color: white !important;
+        text-decoration: none;
+    }
+
+    .logoutbtn{
+        background-color: #226F54;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center!important;
+        padding: 8px 15px;
+        font-size: 14px;
+        color: white !important;
+        text-decoration: none;
+        margin-right: 30px;
+    }
+
 
       .titling{
-          font-weight: bolder;
-          font-size: 2em;
+          text-align: center;
+          font-size: 3em;
           color: #000;
       }
 
-      /* Logo-styled font for Slice of Life */
-.brand-logo{
-    font-family: 'Lobster', cursive;
-    font-weight: 400;
-    font-size: 2.5em; /* Adjust size as needed */
-    color: #DA2C38; /* Add a logo-specific color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for emphasis */
-    letter-spacing: 1px; /* Adjust letter spacing */
-    text-align: center; /* Ensure proper alignment */
-}
+      .card {
+        border-radius: 15px;
+        background-color: #F4F0BB;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 15px auto;
+        text-align: center;
+    }
 
-      nav{
-          background-color: #DA2C38  !important;
-      }
-
-    .nav-wrapper {
-        background-color: #DA2C38 !important;
-        }
-
-        .nav-logo {
-            height: 60px;
-            width: auto;
-            display: block;
-            margin: 0;
-            padding: 0;
-            vertical-align: middle;
-        }
-
-        /* For the navbar "Welcome" message */
-        .welcome-message {
-            display: flex; /* Ensure the message behaves like a flexbox container */
-            align-items: center; /* Vertically align its content to the center */
-            margin: 0; /* Remove any extra vertical margin */
-            padding: 0; /* Remove any extra padding to avoid misalignment */
-            font-size: 16px; /* Keep the font size consistent */
-            color: white; /* Ensure contrast with the navbar background */
-            white-space: nowrap; /* Prevent the text from wrapping to the next line */
-        }
+    .card img {
+        margin-bottom: 10px;
+        width: 350px;
+        height: 300px;
+    }
 
 
-        .nav-wrapper ul.right {
-            display: flex;
-            align-items: center; /* Vertically align items */
-            gap: 20px; /* Add spacing between the "Welcome" text and the button */
-            line-height: 1;
+    .card-action {
+        display: flex;
+        justify-content: center!important;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
 
-        }
+    .button-group {
+        display: flex; /* Use Flexbox for consistency */
+        justify-content: center !important; /* Ensure buttons are horizontally centered */
+        align-items: center; /* Vertically center the buttons */
+        gap: 10px; /* Even spacing between buttons */
+        width: 100%; /* Ensure the group spans the full width of the parent */
+        margin: 0 auto; /* Auto margins to center the group itself */
+        padding: 0; /* Remove extra padding */
+        flex-wrap: nowrap; /* Prevent wrapping unless in very small viewports */
+    }
 
-        .welcome-icon {
-            font-size: 20px; /* Adjust the size of the icon */
-            color: white; /* Match the navbar's text color */
-            cursor: pointer; /* Change the pointer to indicate it's interactive */
-            margin: 0 5px; /* Add some spacing around the icon */
-            vertical-align: middle; /* Align the icon vertically in the navbar */
-            line-height: 1;
-        }
+    .card-action .btn1,
+    .card-action .btn2 {
+        display: inline-flex; /* Display button as inline-flex for full control */
+        align-items: center; /* Vertically center within the button */
+        justify-content: center!important; /* Horizontally center button content */
+        padding: 8px 15px; /* Add internal spacing for buttons */
+        font-size: 14px; /* Ensure uniform text size */
+        color: white !important; /* Make text white */
+        text-decoration: none; /* Remove link underlines */
+        border-radius: 8px; /* Apply rounded corners */
+        transition: all 0.3s ease; /* Smooth transition for all properties */
+    }
 
-        .welcome-icon:hover {
-            color: #f0f0f0; /* Slightly lighten the color when hovered */
-            transition: color 0.3s ease; /* Smooth transition effect on hover */
-        }
+    .card-action .btn1 {
+        background-color: #226F54;
+        margin-left: 33px;
+    }
 
-        .nolog{
-            text-align: center;
-            font-size: 3em;
-            color: #000;
-        }
+    .card-action .btn2 {
+        background-color: red;
+    }
 
-        .preloader {
-          align-items: center;
-          display: flex;
-          height: 25vh;
-          justify-content: center;
-          left: 0;
-          padding-top: 15vh;
-          top: 0;
-          transition: opacity 0.2s linear;
-          width: 100%;
-          z-index: 9999;
-          opacity: 1;
-        }
+    .card-action .btn1:hover {
+        transform: scale(1.05); /* 5% larger on hover */
+        background-color: #1a5a40; /* Slightly darker green */
+        opacity: 1 !important; /* Override the existing opacity change */
+    }
 
-        .loginbtn{
-            background-color: #226F54;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center!important;
-            padding: 8px 15px;
-            font-size: 14px;
-            color: white !important;
-            text-decoration: none;
-        }
+    .card-action .btn2:hover {
+        transform: scale(1.05); /* 5% larger on hover */
+        background-color: #d60000; /* Slightly darker red */
+        opacity: 1 !important; /* Override the existing opacity change */
+    }
 
-        .logoutbtn{
-            background-color: #226F54;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center!important;
-            padding: 8px 15px;
-            font-size: 14px;
-            color: white !important;
-            text-decoration: none;
-            margin-right: 30px;
-        }
-
-
-          .titling{
-              text-align: center;
-              font-size: 3em;
-              color: #000;
-          }
-
-          .card {
-            border-radius: 15px;
-            background-color: #F4F0BB;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 15px auto;
-            text-align: center;
-        }
-
-        .card img {
-            margin-bottom: 10px;
-            width: 350px;
-            height: 300px;
-        }
-
-
-        .card-action {
-            display: flex;
-            justify-content: center!important;
-            align-items: center;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
+    @media (max-width: 768px) {
         .button-group {
-            display: flex; /* Use Flexbox for consistency */
-            justify-content: center !important; /* Ensure buttons are horizontally centered */
-            align-items: center; /* Vertically center the buttons */
-            gap: 10px; /* Even spacing between buttons */
-            width: 100%; /* Ensure the group spans the full width of the parent */
-            margin: 0 auto; /* Auto margins to center the group itself */
-            padding: 0; /* Remove extra padding */
-            flex-wrap: nowrap; /* Prevent wrapping unless in very small viewports */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: center; /* Keep buttons centered */
+            gap: 8px; /* Smaller gap between buttons */
         }
 
-        .card-action .btn1,
-        .card-action .btn2 {
-            display: inline-flex; /* Display button as inline-flex for full control */
-            align-items: center; /* Vertically center within the button */
-            justify-content: center!important; /* Horizontally center button content */
-            padding: 8px 15px; /* Add internal spacing for buttons */
-            font-size: 14px; /* Ensure uniform text size */
-            color: white !important; /* Make text white */
-            text-decoration: none; /* Remove link underlines */
-            border-radius: 8px; /* Apply rounded corners */
-        }
+    }
 
-        .card-action .btn1 {
-            background-color: #226F54;
-            margin-left: 33px;
-        }
-
-        .card-action .btn2 {
-            background-color: red;
-        }
-
-        .card-action .btn1:hover, .card-action .btn2:hover {
-            opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            .button-group {
-                flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-                justify-content: center; /* Keep buttons centered */
-                gap: 8px; /* Smaller gap between buttons */
-            }
-
-        }
 
 
 .card p, .card a  {
