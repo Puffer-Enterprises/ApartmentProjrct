@@ -12,7 +12,8 @@ index_views = Blueprint('index_views', __name__, template_folder='../templates')
 @index_views.route('/', methods=['GET'])
 def index_page():
     apartments = Apartment.query.all()
-    return render_template('index.html', apartments=apartments)
+    return render_template('index.html', show_search=True
+, apartments=apartments)
 
 @index_views.route('/check')
 @jwt_required()
@@ -34,7 +35,8 @@ def check():
     tenant = Tenant.query.filter_by(user_id=user.id).first()
     user_apartment2 = Apartment.query.filter_by(id=tenant.apartment_id).first() if tenant else None
     landlord_apartments = Apartment.query.filter_by(landlord_id=user.id).all()
-    return render_template('index.html', apartments=apartments, landlord_boolean=landlord_boolean, tenant_boolean=tenant_boolean, user_apartment2=user_apartment2, landlord_apartments=landlord_apartments, tenants=tenants, landlords=landlords)
+    return render_template('index.html', apartments=apartments, landlord_boolean=landlord_boolean, tenant_boolean=tenant_boolean, user_apartment2=user_apartment2, landlord_apartments=landlord_apartments, tenants=tenants, landlords=landlords, show_search=True
+)
 
 @index_views.route('/apartments/<apartment_id>') 
 @jwt_required()
@@ -47,7 +49,8 @@ def apartment_details(apartment_id):
     tenants = Tenant.query.all()
     landlords = Landlord.query.all()
     landlord_apartment = Apartment.query.filter_by(landlord_id=current_user.id).first()
-    return render_template('index.html', reviews=reviews,selected_apartment=selected_apartment, reviews2=reviews2,user_apartment=user_apartment,tenant=tenant,tenants=tenants,landlords=landlords,landlord_apartment=landlord_apartment)
+    return render_template('index.html', reviews=reviews, show_search=False
+, selected_apartment=selected_apartment, reviews2=reviews2,user_apartment=user_apartment,tenant=tenant,tenants=tenants,landlords=landlords,landlord_apartment=landlord_apartment)
 
 
 @index_views.route('/apartments/<apartment_id>/<tenant_id>/review', methods=['POST'])
