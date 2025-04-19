@@ -16,7 +16,15 @@ h1{
     width: 100%;
     background: url('/static/bg.png') no-repeat center center fixed;
     background-size: cover;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
 
+  }
+
+  @keyframes fadeIn {
+    to {
+        opacity: 1;
+      }
   }
 
   .titling{
@@ -34,7 +42,10 @@ color: #DA2C38; /* Add a logo-specific color */
 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for emphasis */
 letter-spacing: 1px; /* Adjust letter spacing */
 text-align: center; /* Ensure proper alignment */
+
 }
+
+  
 
   nav{
       background-color: #DA2C38  !important;
@@ -42,6 +53,7 @@ text-align: center; /* Ensure proper alignment */
 
 .nav-wrapper {
     background-color: #DA2C38 !important;
+   
     }
 
     .nav-logo {
@@ -144,6 +156,7 @@ text-align: center; /* Ensure proper alignment */
         padding: 20px;
         margin: 15px auto;
         text-align: center;
+        
     }
 
     .card img {
@@ -208,6 +221,9 @@ text-align: center; /* Ensure proper alignment */
         background-color: #d60000; /* Slightly darker red */
         opacity: 1 !important; /* Override the existing opacity change */
     }
+
+    
+      
 
     @media (max-width: 768px) {
         .button-group {
