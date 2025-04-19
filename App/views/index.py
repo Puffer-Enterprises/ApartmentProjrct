@@ -117,7 +117,7 @@ def search_apartments():
     return render_template('search.html', apartments=apartments)
 
 
-@index_views.route('/apartments/<apartment_id>/delete', methods=['POST'])
+@index_views.route('/apartments/<apartment_id>/delete')
 @jwt_required()
 def delete_apartment(apartment_id):
     apartment = Apartment.query.get(apartment_id)
