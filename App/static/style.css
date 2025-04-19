@@ -42,8 +42,20 @@ color: #DA2C38; /* Add a logo-specific color */
 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for emphasis */
 letter-spacing: 1px; /* Adjust letter spacing */
 text-align: center; /* Ensure proper alignment */
+display: inline-block; /* Needed for transform to behave */
+transform-origin: center center;
+will-change: transform;
+
 
 }
+.brand-logo:hover {
+    animation: glow 1s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+    50% { text-shadow: 2px 2px 8px rgba(218, 204, 16, 0.6); }
+  }
 
   
 
