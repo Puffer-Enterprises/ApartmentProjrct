@@ -14,47 +14,201 @@
         padding:0;
         height: 100%;
         width: 100%;
+        background: url('/static/bg.png') no-repeat center center fixed;
+        background-size: cover;
+
       }
 
-        /* For the navbar "Welcome" message */
-        .welcome-message {
-            color: white; /* Match the text color with the navbar theme */
-            margin: 0; /* Remove unnecessary margins */
-            font-size: 16px; /* Adjust the text size */
-            white-space: nowrap; /* Ensure that the text doesn’t wrap onto a new line */
-        }
-
-        .nav-wrapper ul.right {
-            display: flex; /* Use flexbox to arrange items in one row */
-            align-items: center; /* Vertically align items */
-            gap: 20px; /* Add spacing between the "Welcome" text and the button */
-        }
-
       .titling{
-          text-align: center;
-          font-size: 3em;
+          font-weight: bolder;
+          font-size: 2em;
           color: #000;
       }
 
-      .card {
-    border-radius: 15px; /* Rounded corners for the card */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better visual */
-    padding: 20px;
-    margin: 15px auto; /* Center the cards horizontally */
-    background-color: #fff; /* White card background */
-    text-align: center; /* Center content inside the card */
-    }
-
-    .card img {
-    margin-bottom: 10px;
-    width: 350px; /* Enlarged width for the image */
-    height: 300px; /* Enlarged height for the image */
+      /* Logo-styled font for Slice of Life */
+.brand-logo{
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 2.5em; /* Adjust size as needed */
+    color: #DA2C38; /* Add a logo-specific color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add some shadow for emphasis */
+    letter-spacing: 1px; /* Adjust letter spacing */
+    text-align: center; /* Ensure proper alignment */
 }
 
+      nav{
+          background-color: #DA2C38  !important;
+      }
 
-      .card-action {
-    margin-top: 10px;
-}
+    .nav-wrapper {
+        background-color: #DA2C38 !important;
+        }
+
+        .nav-logo {
+            height: 60px;
+            width: auto;
+            display: block;
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        /* For the navbar "Welcome" message */
+        .welcome-message {
+            display: flex; /* Ensure the message behaves like a flexbox container */
+            align-items: center; /* Vertically align its content to the center */
+            margin: 0; /* Remove any extra vertical margin */
+            padding: 0; /* Remove any extra padding to avoid misalignment */
+            font-size: 16px; /* Keep the font size consistent */
+            color: white; /* Ensure contrast with the navbar background */
+            white-space: nowrap; /* Prevent the text from wrapping to the next line */
+        }
+
+
+        .nav-wrapper ul.right {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            gap: 20px; /* Add spacing between the "Welcome" text and the button */
+            line-height: 1;
+
+        }
+
+        .welcome-icon {
+            font-size: 20px; /* Adjust the size of the icon */
+            color: white; /* Match the navbar's text color */
+            cursor: pointer; /* Change the pointer to indicate it's interactive */
+            margin: 0 5px; /* Add some spacing around the icon */
+            vertical-align: middle; /* Align the icon vertically in the navbar */
+            line-height: 1;
+        }
+
+        .welcome-icon:hover {
+            color: #f0f0f0; /* Slightly lighten the color when hovered */
+            transition: color 0.3s ease; /* Smooth transition effect on hover */
+        }
+
+        .nolog{
+            text-align: center;
+            font-size: 3em;
+            color: #000;
+        }
+
+        .preloader {
+          align-items: center;
+          display: flex;
+          height: 25vh;
+          justify-content: center;
+          left: 0;
+          padding-top: 15vh;
+          top: 0;
+          transition: opacity 0.2s linear;
+          width: 100%;
+          z-index: 9999;
+          opacity: 1;
+        }
+
+        .loginbtn{
+            background-color: #226F54;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center!important;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .logoutbtn{
+            background-color: #226F54;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center!important;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: white !important;
+            text-decoration: none;
+            margin-right: 30px;
+        }
+
+
+          .titling{
+              text-align: center;
+              font-size: 3em;
+              color: #000;
+          }
+
+          .card {
+            border-radius: 15px;
+            background-color: #F4F0BB;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 15px auto;
+            text-align: center;
+        }
+
+        .card img {
+            margin-bottom: 10px;
+            width: 350px;
+            height: 300px;
+        }
+
+
+        .card-action {
+            display: flex;
+            justify-content: center!important;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .button-group {
+            display: flex; /* Use Flexbox for consistency */
+            justify-content: center !important; /* Ensure buttons are horizontally centered */
+            align-items: center; /* Vertically center the buttons */
+            gap: 10px; /* Even spacing between buttons */
+            width: 100%; /* Ensure the group spans the full width of the parent */
+            margin: 0 auto; /* Auto margins to center the group itself */
+            padding: 0; /* Remove extra padding */
+            flex-wrap: nowrap; /* Prevent wrapping unless in very small viewports */
+        }
+
+        .card-action .btn1,
+        .card-action .btn2 {
+            display: inline-flex; /* Display button as inline-flex for full control */
+            align-items: center; /* Vertically center within the button */
+            justify-content: center!important; /* Horizontally center button content */
+            padding: 8px 15px; /* Add internal spacing for buttons */
+            font-size: 14px; /* Ensure uniform text size */
+            color: white !important; /* Make text white */
+            text-decoration: none; /* Remove link underlines */
+            border-radius: 8px; /* Apply rounded corners */
+        }
+
+        .card-action .btn1 {
+            background-color: #226F54;
+            margin-left: 33px;
+        }
+
+        .card-action .btn2 {
+            background-color: red;
+        }
+
+        .card-action .btn1:hover, .card-action .btn2:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .button-group {
+                flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+                justify-content: center; /* Keep buttons centered */
+                gap: 8px; /* Smaller gap between buttons */
+            }
+
+        }
+
 
 .card p, .card a  {
     margin-bottom: 10px; /* Slight spacing between elements */
@@ -66,7 +220,7 @@
     justify-content: space-between; /* Ensure cards don't crowd together */
 }
 
-    .card .features {
+ .card .features {
     display: flex;
     justify-content: center; /* Center the features horizontally */
     align-items: center; /* Align icons and text vertically */
@@ -167,10 +321,140 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Add Apartment Section */
+.add-apartment {
+    width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* Center the form */
+  padding: 20px;
+  background-color: #fff; /* Optional: Set a background for the form */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: For styling */
+
+}
+
 .form-title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
     text-align: center;
+    font-size: 1.8em;
+    color: #226F54;
+    margin-bottom: 20px;
+}
+
+.add-apartment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown-row {
+  display: flex;
+  flex-direction: row; /* Ensure dropdowns appear in one row */
+  justify-content: flex-start; /* Align items to the left */
+  gap: 20px; /* Space between dropdowns */
+  margin-bottom: 20px; /* Space below the dropdown row */
+  align-items: flex-end; /* Align dropdowns with labels */
+}
+
+
+/* Parent container for keeping dropdowns side by side */
+.dropdown-fields {
+    display: flex; /* Enable flexbox for horizontal alignment */
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: flex-start; /* Align fields to the left */
+    align-items: flex-start; /* Keep labels and dropdowns aligned at the top */
+    gap: 20px; /* Add space between fields */
+    width: 100%; /* Allow the container to span full width */
+    box-sizing: border-box; /* Include padding in field width */
+    flex-wrap: nowrap;
+
+}
+
+/* Individual container for each dropdown field */
+.dropdown-container {
+    display: flex;
+    flex-direction: column; /* Stack label above dropdown */
+    align-items: flex-start; /* Align label and dropdown to the left */
+    flex: 1; /* Allow dropdown to take equal space */
+    min-width: 120px; /* Prevent the dropdown from shrinking too much */
+    max-width: 200px; /* Optionally limit the maximum size */
+}
+
+/* Label above dropdown */
+.dropdown-container label {
+    margin-bottom: 5px; /* Space between label and dropdown */
+    font-size: 1rem; /* Set label text size */
+    color: #226F54; /* Custom label color */
+    display: block; /* Ensure labels follow block behavior */
+}
+
+/* Style for the dropdown menu */
+.dropdown-container select {
+    width: 100%; /* Ensures dropdown fits the container */
+    padding: 8px 10px; /* Padding inside the dropdown */
+    font-size: 1rem; /* Improve readability */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Smooth corners for dropdown */
+    background-color: white; /* Default background */
+    box-sizing: border-box; /* Include padding/border in width calculation */
+}
+
+/* Focus state for dropdowns */
+.dropdown-container select:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #DA2C38; /* Red focus border */
+    box-shadow: 0 0 4px #DA2C38; /* Slight shadow for focus */
+}
+
+     .dropdown-fields .dropdown-container {
+         margin: 0 !important;
+         padding: 0 !important;
+     }
+
+
+
+/* Icons and Inputs in One Line */
+.icon-inputs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.icon-inputs label {
+    font-size: 1.5em;
+    color: #226F54;
+}
+
+.icon-inputs .form-control {
+    flex: 1;
+    padding: 7px 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 150px; /* Ensure small width for number inputs */
+}
+
+/* Add Apartment Button Styling */
+.submit-button {
+    background-color: #DA2C38 !important;
+    color: white;
+    padding: 12px;
+    font-size: 1em;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #b5242f; /* Slightly darker shade on hover */
+    transition: background-color 0.3s ease;
 }
 
 .tenant-info {
@@ -190,6 +474,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
+
 }
 
 textarea {
@@ -203,7 +489,7 @@ textarea {
 
 .btn-submit {
     padding: 10px;
-    background-color: #6200ea;
+    background-color: #DA2C38;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -213,7 +499,8 @@ textarea {
 }
 
 .btn-submit:hover {
-    background-color: #3700b3;
+    background-color: #DA2C38;
+    opacity: 0.9;
 }
 
 /* Star rating input */
@@ -238,4 +525,193 @@ textarea {
 .stars-input label:hover,
 .stars-input label:hover ~ label {
     color: #ffc107; /* Highlighted stars */
+}
+
+/* Bed and Baths Dropdown Container */
+.bed-baths-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    color: #333;
+}
+
+.bed-baths-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.bed-baths-container .col {
+    flex: 1 1 auto; /* Evenly distribute columns */
+}
+
+.bed-baths-container select {
+    width: 100%; /* Make each dropdown take the full column width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #666;
+    appearance: none;
+}
+
+#max-rent-dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Rent Range Section */
+.rent-range-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Spacing between elements */
+    margin-bottom: 20px;
+}
+
+.rent-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.rent-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rent-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rent-input label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.rent-input-field {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+}
+
+.rent-separator {
+    font-size: 1.5rem;
+    color: #666;
+    font-weight: bold;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px; /* Adds spacing between each input */
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: 200px; /* Width for the Town input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+ .search-section, .dropdown {
+         overflow: visible !important;
+     }
+
+/* General Styles */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 10px 0; /* Adds spacing */
+}
+
+.dropdown-hover-text {
+    font-size: 16px;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.custom-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    width: 300px; /* Set default width */
+    overflow: visible; /* Ensure no clipping happens */
+}
+
+/* Show dropdown on hover */
+.custom-dropdown:hover .custom-dropdown-content {
+    display: block;
+}
+
+/* Bedroom/Bathroom Button Styles */
+.bedroom-buttons, .bathroom-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.bedroom-button, .bathroom-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.bedroom-button:hover, .bathroom-button:hover {
+    background-color: #ddd;
+}
+
+.bedroom-button.active, .bathroom-button.active {
+    background-color: #6200ea;
+    color: #fff;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* To add spacing between dropdown items */
+.custom-dropdown-content h6 {
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+/* Search Button */
+.search-button .btn {
+    background-color: #226F54;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.search-button .btn:hover {
+    background-color: #194e3b;
 }
